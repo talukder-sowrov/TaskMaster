@@ -6,8 +6,6 @@ from django.contrib.auth.models import User
 class Person(models.Model):
     Name = models.CharField(max_length=50)
     Age = models.IntegerField()
-    Username = models.CharField(max_length=50)
-    Password = models.CharField(max_length=50)
     TASKS = [
         ('ML', 'Mow Lawn'),
         ('G', 'Groceries'),
