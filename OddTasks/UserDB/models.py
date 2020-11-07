@@ -1,12 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator
 
 
 class Person(models.Model):
     Name = models.CharField(max_length=50)
-    Age = models.IntegerField(MinValueValidator(1))
+    Age = models.IntegerField()
     Username = models.CharField(max_length=50)
     Password = models.CharField(max_length=50)
     TASKS = [
@@ -24,3 +23,11 @@ class Person(models.Model):
     Postal = models.CharField(max_length=7)
     Time = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.Name
+
+
+class Client(Person):
+    Money = models.DecimalField(max_digits=10, decimal_places=2)
+    Description = models.CharField(max_length=1000)
