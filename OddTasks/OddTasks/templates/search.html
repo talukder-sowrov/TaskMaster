@@ -4,10 +4,10 @@
 
 <h1>search menu</h1>
 
-<form>
-{{ form }}
-<input type = 'submit' value = 'Save'/>
-
+<form method="GET">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
 </form>
 
 <a href = '/jobs_list'>Jobs List</a>

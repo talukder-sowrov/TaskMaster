@@ -2,11 +2,14 @@
 
 {% block content %}
 
-<p>{{ worker_obect.Name }}</p>
-<p>{{ worker_obect.Age }}</p>
-<p>{{ worker_obect.Task }}</p>
-<p>{{ worker_obect.Location }}</p>
-<p>{{ worker_obect.Price }}</p>
-<p>{{ worker_obect.Phone }}</p>
+{% if results %}
+  {% for result in results %}
+    {{ result.Name }}
+    {{ result.Location }}
+    {{ result.Price }}
+    <br>
+  {% endfor %}
+{% endif %}
+
 
 {% endblock %}

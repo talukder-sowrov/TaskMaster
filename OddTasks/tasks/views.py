@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from tasks.helper import populate
 from tasks.models import Person
+from django.template import RequestContext
 
 from .forms import SearchForm
 
@@ -28,9 +29,8 @@ def search(request):
         #return render(request, "search.html", {'form': form})
     else:
         form = SearchForm()
-    
     return render(request, "search.html", {'form': form})
 
 
 def jobs_list(request):
-    return render(request, "jobs_list.html")   
+    return render(request, "jobs_list.html")
