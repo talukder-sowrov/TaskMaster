@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from tasks.helper import populate
 from tasks.models import Person
 
+from .forms import SearchForm
 
 # Create your views here.
 def initialize(request):
@@ -28,4 +29,4 @@ def search(request):
 
 
 def jobs_list(request):
-    return render(request, "jobs_list.html")
+    return render(request, "jobs_list.html")   
