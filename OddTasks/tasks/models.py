@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
 
 
@@ -13,18 +12,12 @@ class Person(models.Model):
         ('SH', 'Snow Shoveling'),
         ('PH', 'Paint House'),
         ('RL', 'Rake Leaves'),
+        ('M', 'Moving'),
+        ('P', 'Plumbing')
     ]
     Task = models.CharField(max_length=2, choices=TASKS)
-    Address = models.CharField(max_length=120)
-    City = models.CharField(max_length=120)
-    Province = models.CharField(max_length=2)
-    Postal = models.CharField(max_length=7)
-    Time = models.DateTimeField(default=timezone.now)
+    Phone = models.CharField(max_length=50)
+    Location = models.CharField(max_length=120)
 
     def __str__(self):
         return self.Name
-
-
-class Client(Person):
-    Money = models.DecimalField(max_digits=10, decimal_places=2)
-    Description = models.CharField(max_length=1000)
