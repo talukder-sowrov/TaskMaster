@@ -16,6 +16,7 @@ class Person(models.Model):
         ('P', 'Plumbing')
     ]
     Task = models.CharField(max_length=2, choices=TASKS)
+    Price = models.IntegerField()
     Phone = models.CharField(max_length=50)
     Location = models.CharField(max_length=120)
 
