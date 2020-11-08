@@ -19,5 +19,7 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('', include('tasks.urls')),
+    path('search/', include('tasks.urls')),
+    path('jobs_list/', include('tasks.urls')),
     path('admin/', admin.site.urls),
 ]
