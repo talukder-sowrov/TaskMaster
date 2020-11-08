@@ -24,9 +24,7 @@ def search(request):
             location = request.GET.get('location','')
             if user:
                 results = Person.objects.filter(Task__icontains=user, Location__icontains=location)
-                print(results)
-
-        #return render(request, "search.html", {'form': form})
+                return render(request, "jobs_list.html", {'results': results})
     else:
         form = SearchForm()
     return render(request, "search.html", {'form': form})
