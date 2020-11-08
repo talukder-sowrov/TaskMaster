@@ -17,7 +17,7 @@ def index(request):
 
 def search(request):
     if request.method == 'GET':
-        form = SearchForm(request.GET)
+        form = SearchForm(request.GET or None)
         if form.is_valid():
             user = request.GET.get('task', '')
             location = request.GET.get('location','')
@@ -25,10 +25,11 @@ def search(request):
                 results = Person.objects.filter(Task__icontains=user, Location__icontains=location)
                 print(results)
 
-        return render(request, "search.html", {'form': form})
+        #return render(request, "search.html", {'form': form})
     else:
         form = SearchForm()
-        return render(request, "search.html", {'form': form})
+    
+    return render(request, "search.html", {'form': form})
 
 
 def jobs_list(request):
