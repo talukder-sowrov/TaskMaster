@@ -17,13 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
 
-from pages.views import *
-
 urlpatterns = [
-    path('test/', include('UserDB.urls')),
-    path('', home_view),
-    path('customer/', customer_view, name = 'customer'),
-    path('worker/', worker_view, name = 'worker'),
-    path('tasks/', include('tasks.urls')),
+    path('', include('tasks.urls')),
     path('admin/', admin.site.urls),
 ]
