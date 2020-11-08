@@ -24,11 +24,5 @@ urlpatterns = [
     path('', home_view),
     path('customer/', customer_view, name = 'customer'),
     path('worker/', worker_view, name = 'worker'),
-    path('job1/', job_1_view, name = 'job1'),
-    path('job2/', job_2_view, name = 'job2'),
-    path('job3/', job_3_view, name = 'job3'),
-    path('job4/', job_4_view, name = 'job4'),
-    path('job5/', job_5_view, name = 'job5'),
-    path('job6/', job_6_view, name = 'job6'),
     path('admin/', admin.site.urls),
 ]
