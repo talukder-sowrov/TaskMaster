@@ -17,15 +17,18 @@ def index(request):
 
 def search(request):
     if request.method == 'GET':
-        user = request.GET.get('task', '')
-        location = request.GET.get('location','')
-        if user:
-            results = Person.objects.filter(Task__icontains=user, Location__icontains=location)
-            print(results)
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            user = request.GET.get('task', '')
+            location = request.GET.get('location','')
+            if user:
+                results = Person.objects.filter(Task__icontains=user, Location__icontains=location)
+                print(results)
 
-        return render(request, "search.html")
+        return render(request, "search.html", {'form': form})
     else:
-        return render(request, "search.html")
+        form = SearchForm()
+        return render(request, "search.html", {'form': form})
 
 
 def jobs_list(request):
