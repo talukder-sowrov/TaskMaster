@@ -21,9 +21,21 @@ def search(request):
         form = SearchForm(request.GET or None)
         if form.is_valid():
             user = request.GET.get('task', '')
-            location = request.GET.get('location','')
+            location = request.GET.get('location', '')
             if user:
-                results = Person.objects.filter(Task__icontains=user, Location__icontains=location)
+                task_dict = {
+                    "Mow Lawn": "ML",
+                    "Groceries": "G",
+                    "Clean House": "CH",
+                    "Snow Shoveling": "SH",
+                    "Paint Hero": "PH",
+                    "Rake Leaves": "RL",
+                    "Moving": "M",
+                    "Plumbing": "P"
+                }
+
+
+                results = Person.objects.filter(Task__icontains=task_dict[user], Location__icontains=location)
                 return render(request, "jobs_list.html", {'results': results})
     else:
         form = SearchForm()
