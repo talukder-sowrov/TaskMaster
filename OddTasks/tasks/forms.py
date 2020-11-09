@@ -11,3 +11,6 @@ class SearchForm(forms.Form):
 
 class ClickForm(forms.Form):
     task = forms.CharField(label='task')
+
+class NameForm(forms.Form):
+    name = forms.CharField(label='name')
