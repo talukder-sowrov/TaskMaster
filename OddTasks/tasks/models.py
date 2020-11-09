@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+#source of information about the data in the database
+#each model maps to a single database table
+#fields are the only required part of a model
+#field type helps Django decided how to populate database, how to render HTML
 
 class Person(models.Model):
     Name = models.CharField(max_length=50)

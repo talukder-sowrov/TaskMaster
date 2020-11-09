@@ -1,15 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
 
-{% if results %}
-  {% for result in results %}
-    {{ result.Name }}
-    {{ result.Location }}
-    {{ result.Price }}
-    <br>
-  {% endfor %}
-{% endif %}
+<table>
+  <thead style="border: 1px solid black;">
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% if results %}
+    {% for result in results %}
+    <tr>
+      <td>{{ result.Name }}</td>
+      <td>{{ result.Location }}</td>
+      <td>{{ result.Price }}</td>
+    </tr>
+    {% endfor %}
+  {% endif %}
+  </tbody>
+</table>
 
 
 {% endblock %}
