@@ -1,5 +1,5 @@
 import random
-from tasks.models import Person
+from tasks.models import Person, Tasks
 
 
 def phn():
@@ -150,3 +150,19 @@ def populate():
 
             p = Person(Name=name, Age=age, Task=task, Phone=phone, Location=location, Price=price)
             p.save()
+
+def topJobs():
+    images = ("/mowing.jpg", "/grocery.jpg", "/cleaning.jpg", "/shoveling.jpg", "/moving.jpg", "/plumbing.jpg")
+
+    tasks = ('Mow Lawn', 'Groceries','Clean House','Snow Shoveling','Moving','Plumbing')
+
+    links = ('mowing/', 'grocery/' , 'cleaning/', 'shoveling/', 'moving/', 'plumbing/')
+
+    p = zip(tasks, images, links)
+
+    for t in p:
+        q = Tasks(Task= t[0], Photo= t[1], Link= t[2])
+        q.save()
+
+    
+        

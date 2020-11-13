@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
-<div class="container-fluid">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   
@@ -16,6 +18,19 @@
       </form>
     </div>
 </nav>
+<!--This is a comment. Comments are not displayed in the browser
+
+<img src = "{% static 'images/IMG_0573.jpg' %}" alt= "my image">
+-->
+
+<div class = "jumbotron" style = "background: url('/static/images/sunday.jpg'); height:auto; width: 100%;">
+
+  <div class = "display-4" style="margin-left: 10%;">Relax</div>
+  <p class = "lead" style = "color: black; font-family: 'Arvo', serif; font-weight: 700; margin-left: 10%">We'll do the boring stuff</p>
+  <button type="button" class="btn btn-dark" style="margin-left: 10%">Learn More</button>
+</div>
+
+<!--
 
 <div class="card-deck">
     <div class="card" style="margin:5%">
@@ -74,10 +89,118 @@
   </div>
 </div>
 
-{% for job in jobs %}
+-->
 
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row"> 
+      {% for task in all %}
 
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img class="card-img-top" src= "{{ task.Photo.url }}" alt="Card image cap" style="height: 50%; width: 100%;">
+            <div class="card-body">
+              <div class="lead" style="font-family: Arvo;">{{ task.Task }}</div>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+<!--
+{% for task in first %}
+
+  <div class="card" style="width:70%">
+    <img class="card-img-top" src= "{{ task.Photo.url }}" alt="Card image cap" style="height: 50%; width: 100%;">
+    <div class="card-body">
+    <h5>{{ task.Task }}</h5>  
+    </div>
+  </div>
 
 {% endfor %}
 
+</div>
+-->
+
+<div style="padding:5%"> </div>
+
+<!--
+<div class="card-deck"></div>
+
+{% for task in last %}
+
+  <div class="card" >
+    <img class="card-img-top" src= "{{ task.Photo.url }}" alt="Card image cap" style="height: 50%; width: 40%;">
+    <div class="card-body">{{ task.Task }}</div>
+  </div>
+
+{% endfor %}
+-->
+
+</div>
+
+<div class="container-fluid">
+  <div class="row">  
+    <div class="col" style="background-color: lightgray;"></div>
+    <footer class="container py-5" style = "background-color: lightgray; width:100%">
+      <div class="row">
+        <div class="col-6 col-md">
+          
+          <ul class="list-unstyled text-left">
+            <h5>About</h5>
+            <li>
+              <a class="text-muted">How We Work</a>
+            </li>
+            <li>
+              <a class="text-muted">How You Can Support Us</a>
+            </li>
+            <li>
+              <a class="text-muted">Careers</a>
+            </li>
+            <li>
+              <a class="text-muted">News</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Support</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="text-muted">Cancellations</a>
+            </li>
+            <li>
+              <a class="text-muted">COIVD-19 Response</a>
+            </li>
+            <li>
+              <a class="text-muted">Help Centre</a>
+            </li>
+            <li>
+              <a class="text-muted">Trust and Safety</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="text-muted">Developers Zone</a>
+            </li>
+            <li>
+              <a class="text-muted">Beta</a>
+            </li>
+            <li>
+              <a class="text-muted">Suggestions</a>
+            </li>
+            <li>
+              <a class="text-muted">Incognito</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <div class="col" style="background-color: lightgray;"></div>
+  </div>
+</div>
 {% endblock %}

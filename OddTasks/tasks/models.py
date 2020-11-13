@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
+
+fs = FileSystemStorage(location = '/taskphotos/')
 
 #source of information about the data in the database
 #each model maps to a single database table
@@ -26,3 +29,19 @@ class Person(models.Model):
 
     def __str__(self):
         return self.Name
+
+class Tasks(models.Model):
+    TASKS = [
+        ('ML', 'Mow Lawn'),
+        ('G', 'Groceries'),
+        ('CH', 'Clean House'),
+        ('SH', 'Snow Shoveling'),
+        ('M', 'Moving'),
+        ('P', 'Plumbing')
+    ]
+    Task = models.CharField(max_length=30, choices= TASKS)
+    Photo = models.FileField(storage = fs)
+    Link = models.CharField(max_length = 50)
+
+    def __str__(self):
+        return self.Task

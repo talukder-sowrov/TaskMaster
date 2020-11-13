@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from tasks.helper import populate
-from tasks.models import Person
+from tasks.helper import populate, topJobs
+from tasks.models import Person, Tasks
 from django.template import RequestContext
 
 from .forms import SearchForm
@@ -14,6 +14,7 @@ from .forms import NameForm
 
 def initialize(request):
     populate()
+    
     return HttpResponse("Hello, world. You're at the polls index.")
 
 
@@ -87,3 +88,21 @@ def search(request):
     else:
         form = SearchForm()
     return render(request, "search.html", {'form': form})
+
+def home(request):
+    if not Tasks.objects.all().exists():
+        topJobs()
+
+    a = Tasks.objects.get(Task="Mow Lawn")
+    b = Tasks.objects.get(Task="Groceries")
+    c = Tasks.objects.get(Task="Clean House")
+    d = Tasks.objects.get(Task="Snow Shoveling")
+    e = Tasks.objects.get(Task="Moving")
+    f = Tasks.objects.get(Task="Plumbing")
+
+    allt = Tasks.objects.all()
+
+    first = list((a,b,c))
+    last = list((d,e,f))
+    context = {'first': first,'last': last, "all": allt}
+    return render(request, "index.html", context)
